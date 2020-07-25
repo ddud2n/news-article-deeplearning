@@ -30,19 +30,20 @@ now = datetime.now()  # 파일이름 현 시간으로 저장하기
 # colName=re_a_kor , re_a_over
 # pageScale=100
 # query=코로나
+# strSort=DATE, RANK
 
-def crawler(page, query, icate):
+def crawler(page, query, icate, sort):
 
     startcount = 0
     maxpage = int(page)*100
     BASE_URL = 'http://www.riss.kr/search/Search.do?'
-    QUERY_URL = 'isDetailSearch=N&searchGubun=true&viewYn=OP&onHanja=false&strSort=RANK&iStartCount=%d&fsearchMethod=search&sflag=1&isFDetailSearch=N&icate=%s&colName=%s&pageScale=100&query=%s'
+    QUERY_URL = 'isDetailSearch=N&searchGubun=true&viewYn=OP&onHanja=false&strSort=%s&iStartCount=%d&fsearchMethod=search&sflag=1&isFDetailSearch=N&icate=%s&colName=%s&pageScale=100&query=%s'
     HEADERS = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'}
 
     while startcount < maxpage:
 
-        url = BASE_URL + QUERY_URL%(startcount, icate, icate, query)
+        url = BASE_URL + QUERY_URL%(sort, startcount, icate, icate, query)
         response = requests.get(url, headers = HEADERS)
         html = response.text
 
@@ -94,9 +95,10 @@ def main():
 
     page = input("최대 크롤링할 페이지 수 입력하시오: ")
     query = input("검색어 입력: ")
-    icate =input("검색범위 ( 국내 : re_a_kor , 해외 : re_a_over) : ")
+    icate = input("검색범위 ( 국내 : re_a_kor , 해외 : re_a_over) : ")
+    sort = input("정렬방식 ( 최신순 : DATE, 정확도순 : RANK) : ")
 
-    crawler(page, query, icate)
+    crawler(page, query, icate,sort)
 
 
 main()
