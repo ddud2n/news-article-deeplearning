@@ -43,7 +43,7 @@ def date_cleansing(test):
         r = re.compile(pattern)
         match = r.search(test).group(1)
         # print(match)
-        date_text.append(match)
+        date_text.append(match+'전')
 
 
 # 내용 정제화 함수
@@ -106,7 +106,7 @@ def crawler(maxpage, query, sort, s_date, e_date):
         page += 10
 
     # 새로 만들 파일이름 지정
-    outputFileName = '%s-%s-%s  %s시 %s분 %s초.csv' % (
+    outputFileName = 'NAVER_%s-%s-%s  %s시 %s분 %s초.csv' % (
     now.year, now.month, now.day, now.hour, now.minute, now.second)
     df.to_csv(RESULT_PATH + outputFileName, index=False, encoding='ms949')
 
