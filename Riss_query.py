@@ -67,15 +67,8 @@ def crawler(page, query, icate, sort):
             author_text.append(etc_lists[i].text) #저자
             cert_text.append(etc_lists[i+1].text)  # 발행기관
             year_text.append(etc_lists[i+2].text)  # 년도
-            book_text.append(etc_lists[i + 3].text)  # 년도
-            number_text.append(etc_lists[i + 4].text)  # 년도
-
-        print(title_text)
-        print(author_text)
-        print(cert_text)
-        print(year_text)
-        print(book_text)
-        print(number_text)
+            book_text.append(etc_lists[i + 3].text)  # 학술지명
+            number_text.append(etc_lists[i + 4].text)  # 권호사항
 
         # 모든 리스트 딕셔너리형태로 저장
         result = {"title": title_text, "auathor":author_text, "cert":cert_text,  "year": year_text, "book": book_text, "number": number_text,"link": link_text}
