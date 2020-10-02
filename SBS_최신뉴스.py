@@ -2,7 +2,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 from datetime import datetime
 import pandas as pd
-#ㄴㅇㅋㄹ럻ㄹㅎㅇㄹㅇ로허ㅏㅓㅣㅗㅓㅗㅊㅌㅋ
+ㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹ23닥ㄹwoefk
 def main():
 
     sourcecode = urllib.request.urlopen("https://news.sbs.co.kr/news/newsflash.do?plink=GNB&cooper=SBSNEWS").read()
